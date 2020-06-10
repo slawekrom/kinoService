@@ -2,7 +2,11 @@ package service;
 
 
 import dao.MovieDao;
+import dao.ShowingDao;
+import dao.UserDao;
 import db.model.Movie;
+import db.model.Showing;
+import db.model.User;
 
 import javax.jws.WebParam;
 import javax.ws.rs.GET;
@@ -18,7 +22,7 @@ public class MovieService {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String getMovieInfo() {
-        return "Hello ";
+    public Movie getMovieInfo() {
+        return movieDao.getById(1);
     }
 }

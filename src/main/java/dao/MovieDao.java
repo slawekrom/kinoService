@@ -8,7 +8,14 @@ import java.util.List;
 
 public class MovieDao implements Dao<Movie> {
 
-    EntityManager entityManager = FactoryHibernate.getEm();
+    FactoryHibernate factoryHibernate;
+    EntityManager entityManager;
+
+    public MovieDao() {
+        factoryHibernate = new FactoryHibernate();
+        entityManager = FactoryHibernate.getEm();
+    }
+
 
     private void openTransaction(){
         entityManager.getTransaction().begin();

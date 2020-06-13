@@ -33,7 +33,7 @@ public class ReservationDao implements Dao<Reservation>{
     }
     public List<Reservation> getUserReservation(long id){
         openTransaction();
-        List<Reservation> reservationList = entityManager.createQuery("FROM RESERVATION where user.id_person = :id", Reservation.class)
+        List<Reservation> reservationList = entityManager.createQuery("FROM RESERVATION where user.id_user = :id", Reservation.class)
                 .setParameter("id", id)
                 .getResultList();
         commitTransaction();

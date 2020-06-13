@@ -11,6 +11,8 @@
         <class>db.model.Showing</class>
         <class>db.model.Person</class>
         <class>db.model.Reservation</class>
+        <class>db.model.User</class>
+        <class>db.model.Image</class>
         <properties>
             <!-- parametry do zmiany -->
             <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/tickets?useUnicode=tue&amp;useJDBCCompliantTimezoneShift=true&amp;serverTimezone=Europe/Warsaw"/>

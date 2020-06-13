@@ -1,19 +1,17 @@
 package service;
 
 
+import dao.ImageDao;
 import dao.MovieDao;
-import dao.ShowingDao;
-import dao.UserDao;
 import db.model.Movie;
-import db.model.Showing;
-import db.model.User;
 
-import javax.jws.WebParam;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.imageio.ImageIO;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.awt.*;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.util.List;
 
 @Path("/movies")
 public class MovieService {
@@ -22,7 +20,42 @@ public class MovieService {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Movie getMovieInfo() {
-        return movieDao.getById(1);
+    public List<Movie> getMovies() {
+        return movieDao.getAll();
     }
+
+    @GET
+    @Path("/{movieId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Movie getMovieById(@PathParam("movieId") long id) {
+        return movieDao.getById(id);
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/title/{title}")
+    public Movie getMovieByTitle(@PathParam("title") String title) {
+        return movieDao.getByTitle(title);
+    }
+
+    @GET
+    @Path("/image/{movieId}")
+    @Produces("image/jpg")
+    public Image getImage(@PathParam(value = "movieId") long id) {
+        Image image = null;
+        ImageDao imageDao = new ImageDao();
+        ByteArrayInputStream bis = new ByteArrayInputStream(imageDao.getByMovieId(id).getImage());
+        try {
+            image = ImageIO.read(bis);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return image;
+    }
+   /* @GET
+    @Path("/showing")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Showing getShowingInfo(@QueryParam("showingId")long id) {
+        return showingDao.getById(id);
+    }*/
 }

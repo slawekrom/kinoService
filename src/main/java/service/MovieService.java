@@ -40,9 +40,9 @@ public class MovieService {
 
     @GET
     @Path("/image/{movieId}")
-    @Produces("image/jpg")
-    public Image getImage(@PathParam(value = "movieId") long id) {
-        Image image = null;
+    @Produces(MediaType.APPLICATION_OCTET_STREAM)
+    public byte[] getImage(@PathParam(value = "movieId") long id) {
+        /*Image image = null;
         ImageDao imageDao = new ImageDao();
         ByteArrayInputStream bis = new ByteArrayInputStream(imageDao.getByMovieId(id).getImage());
         try {
@@ -50,7 +50,9 @@ public class MovieService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return image;
+        return image;*/
+        ImageDao imageDao = new ImageDao();
+        return imageDao.getByMovieId(id).getImage();
     }
    /* @GET
     @Path("/showing")

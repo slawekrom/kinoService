@@ -76,11 +76,11 @@ public class ReservationService {
 
     @GET
     @Path("/pdf/{reservationId}")
-    @Produces()
+    @Produces(MediaType.APPLICATION_OCTET_STREAM)
     public byte[] getPDFofReservation(@PathParam(value = "reservationId") long id) throws IOException, DocumentException {
         Reservation result = reservationDao.getById(id);
         Document document = new Document();
-        PdfWriter.getInstance(document, new FileOutputStream("resources/" + id + "_reservation.pdf"));
+        PdfWriter.getInstance(document, new FileOutputStream("C:\\Users\\48502\\Desktop\\semestr\\rsi\\" + id + "_reservation.pdf"));
         document.open();
         Chunk chunk = new Chunk("Person name and surname: " + result.getUser().getFirstName() + " " + result.getUser().getSecondName());
         document.add(chunk);
@@ -95,7 +95,7 @@ public class ReservationService {
         document.add(chunk);
         document.add(new Paragraph());
         document.close();
-        File f = new File("/" + id + "_reservation.pdf");
+        File f = new File("C:\\Users\\48502\\Desktop\\semestr\\rsi\\" + id + "_reservation.pdf");
         return Files.readAllBytes(f.toPath());
     }
     private String addReservedPlaces(String reservedPlaces, String occupiedPlaces) {

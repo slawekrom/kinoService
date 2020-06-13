@@ -72,12 +72,6 @@ public class UserService {
         userDao.delete(userDao.getById(id));
     }
 
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    public void addNewReservation(User user) {
-        User newUser = new User(user.getFirstName(), user.getSecondName(), user.getPesel(), encode(user.getPassword()));
-        userDao.save(newUser);
-    }
     @GET
     @Path("/auth")
     @Produces(MediaType.APPLICATION_JSON)

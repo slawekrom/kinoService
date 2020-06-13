@@ -57,12 +57,14 @@ public class ReservationService {
     public void editReservation(ReservationParam reservation, @PathParam("reservationId") long id) {
         Reservation newReservation = reservationDao.getById(id);
         Showing showing = showingDao.getById(reservation.getShowingId());
-        updateShowingPlaces(reservation.getPlaces(), showing);
-        showing.setOccupiedPlaces(addReservedPlaces(reservation.getPlaces(), showing.getOccupiedPlaces()));
-        showing.setFreePlaces(removeFreePlaces(reservation.getPlaces(), showing.getFreePlaces()));
-        showingDao.update(showing);
+        if (reservation.getPlaces()!= null && !reservation.getPlaces().isEmpty()) {
+            updateShowingPlaces(reservation.getPlaces(), showing);
+            showing.setOccupiedPlaces(addReservedPlaces(reservation.getPlaces(), showing.getOccupiedPlaces()));
+            showing.setFreePlaces(removeFreePlaces(reservation.getPlaces(), showing.getFreePlaces()));
+            showingDao.update(showing);
+            newReservation.setPlaces(reservation.getPlaces());
+        }
         newReservation.setIsPaid(reservation.isPaid());
-        newReservation.setPlaces(reservation.getPlaces());
         reservationDao.update(newReservation);
     }
     @DELETE

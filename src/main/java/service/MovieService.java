@@ -6,11 +6,15 @@ import dao.MovieDao;
 import db.model.Movie;
 
 import javax.imageio.ImageIO;
+import javax.print.attribute.standard.Media;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.StreamingOutput;
 import java.awt.*;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.List;
 
 @Path("/movies")
@@ -40,19 +44,17 @@ public class MovieService {
 
     @GET
     @Path("/image/{movieId}")
-    @Produces("image/png")
-    public Image getImage(@PathParam(value = "movieId") long id) {
-        Image image = null;
+    @Produces({"image/png"})
+    public Response getImage(@PathParam(value = "movieId") long id) {
         ImageDao imageDao = new ImageDao();
-        ByteArrayInputStream bis = new ByteArrayInputStream(imageDao.getByMovieId(id).getImage());
-        try {
-            image = ImageIO.read(bis);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return image;
-        /*ImageDao imageDao = new ImageDao();
-        return imageDao.getByMovieId(id).getImage();*/
+        byte[] image = imageDao.getByMovieId(id).getImage();
+        return Response.ok().entity(new StreamingOutput() {
+            @Override
+            public void write(OutputStream outputStream) throws IOException, WebApplicationException {
+                outputStream.write(image);
+                outputStream.flush();
+            }
+        }).build();
     }
    /* @GET
     @Path("/showing")

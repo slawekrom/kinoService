@@ -48,7 +48,7 @@ public class ReservationService {
         showing.setOccupiedPlaces(addReservedPlaces(reservationParam.getPlaces(), showing.getOccupiedPlaces()));
         showing.setFreePlaces(removeFreePlaces(reservationParam.getPlaces(), showing.getFreePlaces()));
         showingDao.update(showing);
-        Reservation reservation = new Reservation(reservationParam.getPlaces(), reservationParam.isPaid(), user, showing);
+        Reservation reservation = new Reservation(reservationParam.getPlaces(), reservationParam.getPaid(), user, showing);
         reservationDao.save(reservation);
     }
     @PUT
@@ -64,7 +64,7 @@ public class ReservationService {
             showingDao.update(showing);
             newReservation.setPlaces(reservation.getPlaces());
         }
-        newReservation.setIsPaid(reservation.isPaid());
+        newReservation.setIsPaid(reservation.getPaid());
         reservationDao.update(newReservation);
     }
     @DELETE
@@ -82,7 +82,7 @@ public class ReservationService {
     public byte[] getPDFofReservation(@PathParam(value = "reservationId") long id) throws IOException, DocumentException {
         Reservation result = reservationDao.getById(id);
         Document document = new Document();
-        PdfWriter.getInstance(document, new FileOutputStream("C:\\Users\\48502\\Desktop\\semestr\\rsi\\" + id + "_reservation.pdf"));
+        PdfWriter.getInstance(document, new FileOutputStream("E:\\Studia\\6 semester\\kinoService\\resources\\" + id + "_reservation.pdf"));
         document.open();
         Chunk chunk = new Chunk("Person name and surname: " + result.getUser().getFirstName() + " " + result.getUser().getSecondName());
         document.add(chunk);
@@ -97,7 +97,7 @@ public class ReservationService {
         document.add(chunk);
         document.add(new Paragraph());
         document.close();
-        File f = new File("C:\\Users\\48502\\Desktop\\semestr\\rsi\\" + id + "_reservation.pdf");
+        File f = new File("E:\\Studia\\6 semester\\kinoService\\resources\\" + id + "_reservation.pdf");
         return Files.readAllBytes(f.toPath());
     }
     private String addReservedPlaces(String reservedPlaces, String occupiedPlaces) {

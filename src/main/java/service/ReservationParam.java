@@ -5,11 +5,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class ReservationParam {
 
     String places;
-    boolean isPaid;
+    boolean paid;
     long userId;
     long showingId;
 
@@ -18,7 +17,7 @@ public class ReservationParam {
 
     public ReservationParam(String places, boolean isPaid, long userId, long showingId) {
         this.places = places;
-        this.isPaid = isPaid;
+        this.paid = isPaid;
         this.userId = userId;
         this.showingId = showingId;
     }
@@ -31,12 +30,12 @@ public class ReservationParam {
         this.places = places;
     }
 
-    public boolean isPaid() {
-        return isPaid;
+    public boolean getPaid() {
+        return paid;
     }
 
     public void setPaid(boolean paid) {
-        isPaid = paid;
+        this.paid = paid;
     }
 
     public long getUserId() {

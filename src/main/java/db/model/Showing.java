@@ -7,6 +7,7 @@ import lombok.ToString;
 import utils.ProgramUtil;
 
 import javax.persistence.*;
+import javax.ws.rs.core.Link;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.ArrayList;
@@ -33,6 +34,9 @@ public class Showing implements Serializable {
     @ManyToOne
     @JoinColumn(name = "ID_MOVIE")
     private Movie movie;
+
+    @Transient
+    List<Link> links = new ArrayList<>();
 
     public Showing(Date date, Movie movie) {
         this.date = date;

@@ -1,0 +1,16 @@
+cze 15, 2020 1:11:52 PM filter.LoggingFilter filter
+INFO: [Accept=text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2,Accept-Encoding=gzip,Cache-Control=no-cache,Connection=keep-alive,Host=localhost:8080,Pragma=no-cache,User-Agent=IntelliJ IDEA/193.6494.35]
+cze 15, 2020 1:11:52 PM filter.LoggingFilter filter
+INFO: [Content-Type=application/json]
+cze 15, 2020 1:11:56 PM filter.LoggingFilter filter
+INFO: [Accept=text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9,Accept-Encoding=gzip, deflate, br,Accept-Language=pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7,Connection=keep-alive,Cookie=JSESSIONID=61B1FFC61C47CDAA673A6BA40EF67A41.desktop-781o8i6; JSESSIONID=f9d7cafcd186e351a2d409a9476b; treeForm_tree-hi=treeForm:tree:resources:JDBC:jdbcResources,Host=localhost:8080,Sec-Fetch-Dest=document,Sec-Fetch-Mode=navigate,Sec-Fetch-Site=none,Sec-Fetch-User=?1,Upgrade-Insecure-Requests=1,User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36 OPR/68.0.3618.165]
+cze 15, 2020 1:11:56 PM filter.LoggingFilter filter
+INFO: [Content-Type=application/json]
+cze 15, 2020 1:12:10 PM filter.LoggingFilter filter
+INFO: [Accept=text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9,Accept-Encoding=gzip, deflate, br,Accept-Language=pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7,Connection=keep-alive,Cookie=JSESSIONID=61B1FFC61C47CDAA673A6BA40EF67A41.desktop-781o8i6; JSESSIONID=f9d7cafcd186e351a2d409a9476b; treeForm_tree-hi=treeForm:tree:resources:JDBC:jdbcResources,Host=localhost:8080,Sec-Fetch-Dest=document,Sec-Fetch-Mode=navigate,Sec-Fetch-Site=none,Sec-Fetch-User=?1,Upgrade-Insecure-Requests=1,User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36 OPR/68.0.3618.165]
+cze 15, 2020 1:12:10 PM filter.LoggingFilter filter
+INFO: [Content-Type=application/json]
+cze 15, 2020 1:12:49 PM filter.LoggingFilter filter
+INFO: [Accept=text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9,Accept-Encoding=gzip, deflate, br,Accept-Language=pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7,Connection=keep-alive,Cookie=JSESSIONID=61B1FFC61C47CDAA673A6BA40EF67A41.desktop-781o8i6; JSESSIONID=f9d7cafcd186e351a2d409a9476b; treeForm_tree-hi=treeForm:tree:resources:JDBC:jdbcResources,Host=localhost:8080,Sec-Fetch-Dest=document,Sec-Fetch-Mode=navigate,Sec-Fetch-Site=none,Sec-Fetch-User=?1,Upgrade-Insecure-Requests=1,User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36 OPR/68.0.3618.165]
+cze 15, 2020 1:12:49 PM filter.LoggingFilter filter
+INFO: [Content-Type=application/json]

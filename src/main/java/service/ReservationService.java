@@ -12,7 +12,7 @@ import db.model.Reservation;
 import db.model.Showing;
 import db.model.User;
 import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.*;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -27,6 +27,8 @@ public class ReservationService {
     ReservationDao reservationDao = new ReservationDao();
     ShowingDao showingDao = new ShowingDao();
     UserDao userDao = new UserDao();
+    @Context
+    UriInfo uriInfo;
 
 
     @GET
@@ -38,7 +40,15 @@ public class ReservationService {
     @Path("/{reservationId}")
     @Produces(MediaType.APPLICATION_JSON)
     public Reservation getReservationById(@PathParam(value = "reservationId") long id){
-        return reservationDao.getById(id);
+        Reservation reservation = reservationDao.getById(id);
+        Link self = Link.fromUriBuilder(uriInfo.getAbsolutePathBuilder())
+                .rel("self").build();
+        UriBuilder uriBuilder = uriInfo.getBaseUriBuilder().path("/reservations/pdf/" + id);
+        Link pdf = Link.fromUriBuilder(uriBuilder)
+                .rel("pdf").build();
+        reservation.getLinks().add(self);
+        reservation.getLinks().add(pdf);
+        return reservation;
     }
     @POST
     @Consumes(MediaType.APPLICATION_JSON)

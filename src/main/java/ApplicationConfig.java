@@ -1,3 +1,4 @@
+import filter.LoggingFilter;
 import service.MovieService;
 import service.ReservationService;
 import service.ShowingService;
@@ -17,6 +18,7 @@ public class ApplicationConfig extends Application{
         h.add(ShowingService.class);
         h.add(UserService.class);
         h.add(ReservationService.class);
+        h.add(LoggingFilter.class);
         return h;
     }
 }

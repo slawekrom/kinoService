@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.ws.rs.core.Link;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +32,9 @@ public class Reservation implements Serializable {
     @ManyToOne
     @JoinColumn(name = "ID_SHOWING")
     private Showing showing;
+
+    @Transient
+    List<Link> links = new ArrayList<>();
 
     public Reservation(String places, Boolean isPaid, User user, Showing showing) {
         this.places = places;

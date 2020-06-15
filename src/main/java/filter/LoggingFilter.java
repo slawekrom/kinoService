@@ -26,11 +26,11 @@ public class LoggingFilter  implements ContainerRequestFilter, ContainerResponse
 
     @Override
     public void filter(ContainerRequestContext containerRequestContext) throws IOException {
-        LOGGER.info(String.valueOf(containerRequestContext.getHeaders()));
+        LOGGER.info("Request headers: " + String.valueOf(containerRequestContext.getHeaders()));
     }
 
     @Override
     public void filter(ContainerRequestContext containerRequestContext, ContainerResponseContext containerResponseContext) throws IOException {
-        LOGGER.info(String.valueOf(containerResponseContext.getHeaders()));
+        LOGGER.info("Response headers: " + String.valueOf(containerResponseContext.getHeaders()));
     }
 }
